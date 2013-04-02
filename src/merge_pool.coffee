@@ -1,24 +1,22 @@
-util = require 'util'
-async = require 'async'
-
-_log = (text) -> 
-	console.log "MergePool: #{text}"
-
 class MergePool
 	###
 	Merge Pool
 
 	merge multi requests, process one and response all the same requests
 	###
-	constructor: (opt={}) ->
+
+	constructor: ->
 		###
 		constructor
-		> @opt:
-		>	debug: 
 		###
 		@pendings = {}
-		@debug = !!opt.debug
-		
+
+	create: -> 
+		###
+		create new MergePool instance
+		###
+		new MergePool
+
 	run: (key,exec,args...,callback) ->
 		###
 		run(key,exec,args...,callback)
@@ -28,10 +26,8 @@ class MergePool
 		###
 
 		# check params
-		unless key?
-			throw new Error 'MergePool.run: key can not must be null'
 		unless 'string' is typeof key
-			key = key.toString()
+			throw new Error 'MergePool.run: key can not must be a string'
 		unless 'function' is typeof exec
 			throw new Error 'MergePool.run: exec must be a function'
 		unless 'function' is typeof callback
@@ -60,4 +56,4 @@ class MergePool
 			process.nextTick ->	done err
 		return
 
-module.exports = MergePool
+module.exports = new MergePool

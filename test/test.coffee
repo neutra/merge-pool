@@ -1,10 +1,9 @@
 async = require 'async'
 assert = require 'assert'
 
-MergePool = require '../lib/merge_pool'
+mp = require '../lib/merge_pool'
 
 exports.test = (test) ->
-	mp = new MergePool
 	outputs = null
 	echo = (input,cb) ->
 		console.log "accept input: #{input}"
