@@ -1,0 +1,17 @@
+{
+  "name": "merge-pool",
+  "description": "merge multi requests, process one and response all the same requests",
+  "keywords": ["merge-pool","merge"],
+  "version": "0.1",
+  "author": {
+    "name": "neutra"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neutra/merge-pool.git"
+  },
+  "engine": [
+    "node >= 0.6"
+  ],
+  "main": "./lib/merge_pool.js"
+}
